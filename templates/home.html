@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 style="margin-top: 100px"> Weather App </h1>
+        <form action="/weather" method="post" style="margin-bottom: 50px">
+          <input name="location" placeholder="Location:" type="text" required>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    <div class="container">
+        <h2 style="margin-bottom: 20px"> Nearby Weather Conditions</h2>
+        <div class="row">
+            {% for loc_data in weather_data %}
+                <div class="col-sm" id="weather-box">
+                    <h3 style="min-height: 70px"> {{ loc_data['name'] }}</h3>
+                    <h3>{{ loc_data['time'] }}</h3>
+                    <img src="{{ loc_data['icon'] }}" alt="{{ loc_data['icon_alt'] }}">
+                    <h3>{{ loc_data['temp'] }}° C</h3>
+                    <h3>Humidity: {{ loc_data['humidity'] }} </h3>
+                    <h3>Wind: {{ loc_data['wind'] }} </h3>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

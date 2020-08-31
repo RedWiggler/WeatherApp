@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 style="margin-top: 100px; margin-bottom: 20px" >Fuilure</h1>
+    <h3>The location you insert: "{{location}}", is not valid or not a specific place</h3>
+        <form action="/home" method="post">
+          <button type="back" class="btn btn-primary">Back</button>
+        </form>
+{% endblock %}

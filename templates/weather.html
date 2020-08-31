@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 style="margin-top: 100px; margin-bottom: 20px"> The Weather </h1>
+    <div id="weather-box" style="margin: auto; max-width: fit-content">
+        <h3> {{ loc_data['name'] }}</h3>
+        <h3>{{ loc_data['time'] }}</h3>
+        <img src="{{ loc_data['icon'] }}" alt="{{ loc_data['icon_alt'] }}">
+        <h3>{{ loc_data['temp'] }}° C</h3>
+        <h3>Humidity: {{ loc_data['humidity'] }} </h3>
+        <h3>Wind: {{ loc_data['wind'] }} </h3>
+    </div>
+    <form action="/home" method="post">
+        <button type="back" class="btn btn-primary">Back</button>
+    </form>
+{% endblock %}

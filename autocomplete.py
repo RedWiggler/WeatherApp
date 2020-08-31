@@ -6,7 +6,7 @@ from requests_html import HTMLSession
 import requests
 
 
-API_key = "AIzaSyCGp81ig8N8HHvPTCwGOnF4CAbEmjY2D1s"
+API_key = ""
 
 def get_autocomplete_list(input):
     """

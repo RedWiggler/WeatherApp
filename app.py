@@ -4,14 +4,14 @@
         2.An input field to allow the user to search any location.
 """
 
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request, Response
 from getforecast import locationweather, nearbyweather
 from autocomplete import get_autocomplete_list
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=["POST", "GET"])
 @app.route("/home", methods=["POST", "GET"])
 def home():
     weather_data = nearbyweather()
@@ -30,11 +30,11 @@ def weather():
         return render_template('fail.html', title="Failure", location=location)
 
 
-@app.route("/autocomplete")
+@app.route("/autocomplete", methods=["GET", "POST"])
 def autocomplete():
-    # input = request.args.get('input')
-    # prediction_list = get_autocomplete_list(input)
-    return render_template('autoco.html')
+    inp = request.args.get("input")
+    prediction_list = get_autocomplete_list(inp)
+    return jsonify(prediction_list)
 
 
 if __name__ == '__main__':

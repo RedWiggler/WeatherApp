@@ -8,13 +8,14 @@ import requests
 
 API_key = ""
 
-def get_autocomplete_list(input):
+
+def get_autocomplete_list(inp):
     """
     Using google place API to create predictions list based on the input the client insert to the search box
     :param input: The input the client insert to the search box
     :return: list of predictions for locations based on the input
     """
-    url = f"https://maps.googleapis.com/maps/api/place/autocomplete/json?input={input}&types=(cities)&language=pt_BR&key={API_key}"
+    url = f"https://maps.googleapis.com/maps/api/place/autocomplete/json?input={inp}&types=(cities)&language=pt_BR&key={API_key}"
     prediction_list = []
     try:
         r = requests.get(url)
@@ -23,8 +24,9 @@ def get_autocomplete_list(input):
 
     except requests.exceptions.RequestException as e:
         print(e)
-    return prediction_list
+    return list(set(prediction_list))
 
 
 if __name__ == "__main__":
-    print(get_autocomplete_list("n"))
+    pass
+    # print(get_autocomplete_list("n"))
